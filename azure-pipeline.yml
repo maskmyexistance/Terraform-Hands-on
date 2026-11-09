@@ -16,7 +16,6 @@ steps:
   inputs:
     provider: azurerm
     command: init
-    backendServiceArm: terraform-sp-connect
 
 - task: TerraformTaskV4@4
   displayName: Terraform Plan
