@@ -1,0 +1,33 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: TerraformInstaller@1
+  displayName: Install Terraform
+  inputs:
+    terraformVersion: 'latest'
+
+- task: TerraformTaskV4@4
+  displayName: Terraform Init
+  inputs:
+    provider: azurerm
+    command: init
+    backendServiceArm: terraform-sp-connect
+
+- task: TerraformTaskV4@4
+  displayName: Terraform Plan
+  inputs:
+    provider: azurerm
+    command: plan
+    environmentServiceNameAzureRM: terraform-sp-connect
+
+- task: TerraformTaskV4@4
+  displayName: Terraform Apply
+  inputs:
+    provider: azurerm
+    command: apply
+    environmentServiceNameAzureRM: terraform-sp-connect
