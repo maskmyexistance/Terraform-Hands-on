@@ -16,6 +16,12 @@ steps:
   inputs:
     provider: azurerm
     command: init
+    backendServiceArm: terraform-sp-connect
+
+    backendAzureRmResourceGroupName: rg-tfstate
+    backendAzureRmStorageAccountName: satfstate123456789123
+    backendAzureRmContainerName: tfstate
+    backendAzureRmKey: terraform.tfstate
 
 - task: TerraformTaskV4@4
   displayName: Terraform Plan
